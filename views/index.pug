@@ -1,0 +1,40 @@
+//Chris Blaylock
+//10/28/2020
+//WDD-3400
+
+include components/alerts
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    meta(name="description",content="")
+    meta(name="author",content="")
+    link(rel="icon",href="../../favicon.ico")
+    title= title
+    block styles
+      link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+
+form(action='/submit', method='POST')
+
+  p
+      | username: 
+      input(type='text', name='username', placeholder='')
+      |          password: 
+      input(type='password', name='password', value='')
+
+  if expressFlash.length > 0
+        p <strong>Flash!</strong> #{ expressFlash }
+
+  if sessionFlash && sessionFlash.message
+        div(class=sessionFlash.type)
+            .alert.alert-success #{ sessionFlash.message }
+            
+  input(type='submit', value='Submit')
+
+block body
+
+block scripts
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
